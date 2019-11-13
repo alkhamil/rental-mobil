@@ -24,10 +24,10 @@ $data = $this->session->userdata('data');
                   <div class="form-group">
                     <input type="hidden" name="user_id" value="<?= $data['id'] ?>">
                     <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
-                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                    <input type="text" class="form-control" name="name" placeholder="Name" required autocomplete="off">
                   </div>
                   <div class="form-group">
-                    <input type="number" class="form-control" name="sim" placeholder="No SIM" required>
+                    <input type="number" class="form-control" name="sim" placeholder="No SIM" required autocomplete="off">
                   </div>
                 </div>
             </div>
