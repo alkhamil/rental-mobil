@@ -12,7 +12,7 @@ $detail = $detail;
 $harga_per_hari = $tagihan['price'];
 $start_date = date('d', strtotime($detail['start_date']));
 $end_date = date('d', strtotime($detail['end_date']));
-
+// var_dump($detail);
 $durasi = $end_date - $start_date;
 $total = $durasi * $harga_per_hari;
 ?>
@@ -36,6 +36,21 @@ $total = $durasi * $harga_per_hari;
                         <td>Total Tertagih</td>
                         <td>:</td>
                         <td>Rp. <?= number_format($total) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>:</td>
+                        <td><?= $tagihan['type'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td><?= $tagihan['name'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Flat Nomor</td>
+                        <td>:</td>
+                        <td><?= $tagihan['number'] ?></td>
                     </tr>
                 </thead>
             </table>

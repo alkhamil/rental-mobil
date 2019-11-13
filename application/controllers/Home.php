@@ -56,7 +56,7 @@ class Home extends CI_Controller {
     public function bayar($product_id, $userID)
     {
         $tagihan = $this->db->get_where('products',['id'=>$product_id])->row_array();
-        $detail = $this->db->get_where('rent',['user_id'=>$userID])->row_array();
+        $detail = $this->db->get_where('rent',['user_id'=>$userID, 'product_id'=>$product_id])->row_array();
         $data = [
             'title'         => 'Pembayaran',
             'isi'           => 'home/bayar',
