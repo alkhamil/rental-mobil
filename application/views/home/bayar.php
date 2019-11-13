@@ -12,8 +12,6 @@ $detail = $detail;
 $harga_per_hari = $tagihan['price'];
 $start_date = date('d', strtotime($detail['start_date']));
 $end_date = date('d', strtotime($detail['end_date']));
-var_dump($start_date);
-var_dump($end_date);
 
 $durasi = $end_date - $start_date;
 $total = $durasi * $harga_per_hari;

@@ -32,9 +32,10 @@ class Home extends CI_Controller {
     public function lanjut_sewa()
     {
         $productID = $this->input->post('product_id');
+        $userID = $this->input->post('user_id');
         $rent = [
             'product_id'    => $productID,
-            'user_id'       => $this->input->post('user_id'),
+            'user_id'       => $userID,
             'name'          => $this->input->post('name'),
             'sim'           => $this->input->post('sim'),
             'start_date'    => $this->input->post('start_date'),
@@ -48,14 +49,14 @@ class Home extends CI_Controller {
             redirect(base_url('home'), 'refresh');
         }else{
             $this->session->set_flashdata('sukses', '<script>swal("Success","Anda berhasil sewa, silahkan lakukan pembayaran !","success")</script>');
-            redirect(base_url('home/bayar/'.$productID), 'refresh');
+            redirect(base_url('home/bayar/'.$productID.'/'.$userID), 'refresh');
         }
     }
 
-    public function bayar($product_id)
+    public function bayar($product_id, $userID)
     {
         $tagihan = $this->db->get_where('products',['id'=>$product_id])->row_array();
-        $detail = $this->db->get_where('rent',['product_id'=>$product_id])->row_array();
+        $detail = $this->db->get_where('rent',['user_id'=>$userID])->row_array();
         $data = [
             'title'         => 'Pembayaran',
             'isi'           => 'home/bayar',
