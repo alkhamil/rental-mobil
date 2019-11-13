@@ -1,0 +1,50 @@
+<?php 
+$p = $productByID; 
+$data = $this->session->userdata('data');
+
+?>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-7 mx-auto">
+      <form method="post" action="<?= base_url('home/lanjut_sewa') ?>">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <img src="<?= base_url('assets/upload/'.$p['image']) ?>" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <h4><?= $p['name'] ?></h4>
+                    <small>Decription : </small><br>
+                    <i>"<?= $p['description'] ?>"</i><br>
+                    Harga sewa : <strong class="text-info"><?= $p['price'] ?>/hari</strong>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="hidden" name="user_id" value="<?= $data['id'] ?>">
+                    <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
+                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control" name="sim" placeholder="No SIM" required>
+                  </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                  <input type="date" class="form-control" name="start_date">
+                </div>
+                <div class="col-md-6">
+                  <input type="date" class="form-control" name="end_date">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="<?= base_url('home') ?>" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+            <button type="submit" class="btn btn-primary">Lanjutkan Sewa</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
