@@ -52,6 +52,11 @@ $total = $durasi * $harga_per_hari;
                         <td>:</td>
                         <td><?= $tagihan['number'] ?></td>
                     </tr>
+                    <tr>
+                        <a href="<?= base_url('home') ?>" class="btn btn-danger btn-sm mb-2">
+                        <i class="fa fa-home"></i> Kembali
+                        </a>
+                    </tr>
                 </thead>
             </table>
             <div class="form-group">
