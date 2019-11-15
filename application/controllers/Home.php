@@ -56,7 +56,8 @@ class Home extends CI_Controller {
     public function bayar($product_id, $userID)
     {
         $tagihan = $this->db->get_where('products',['id'=>$product_id])->row_array();
-        $detail = $this->db->get_where('rent',['user_id'=>$userID, 'product_id'=>$product_id])->row_array();
+        // $detail = $this->db->get_where('rent',['user_id'=>$userID, 'product_id'=>$product_id])->result_array();
+        $detail = $this->db->query("SELECT * FROM rent WHERE user_id = $userID AND product_id = $product_id ORDER BY ID DESC")->row_array();
         $data = [
             'title'         => 'Pembayaran',
             'isi'           => 'home/bayar',
@@ -64,6 +65,11 @@ class Home extends CI_Controller {
             'detail'        => $detail
         ];
         $this->load->view('frontend/wrapper', $data);
+    }
+
+    public function order($data)
+    {
+        die($data);
     }
 
 }

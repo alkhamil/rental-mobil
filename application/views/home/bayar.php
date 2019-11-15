@@ -6,13 +6,12 @@ if ($this->session->flashdata('sukses')) {
 }
 
 $data = $this->session->userdata('data');
+// var_dump($data);
 $tagihan = $tagihan;
 $detail = $detail;
-
 $harga_per_hari = $tagihan['price'];
 $start_date = date('d', strtotime($detail['start_date']));
 $end_date = date('d', strtotime($detail['end_date']));
-// var_dump($detail);
 $durasi = $end_date - $start_date;
 $total = $durasi * $harga_per_hari;
 ?>
@@ -22,6 +21,11 @@ $total = $durasi * $harga_per_hari;
             <table class="table table-sm tabel-">
                 <h2 class="text-center">Invoice</h2>
                 <thead>
+                    <tr>
+                        <td>Nama Penyewa</td>
+                        <td>:</td>
+                        <td><?= $detail['name'] ?></td>
+                    </tr>
                     <tr>
                         <td>Harga / Hari</td>
                         <td>:</td>
@@ -59,6 +63,9 @@ $total = $durasi * $harga_per_hari;
                     </tr>
                 </thead>
             </table>
+            <button id="bayar" class="btn btn-warning btn-sm">
+                <i class="fa fa-money"></i> Bayar Sekarang
+            </button>
             <div class="form-group">
                 <label>Pilih Bank</label>
                 <select id="bank" class="form-control">
@@ -110,8 +117,14 @@ $total = $durasi * $harga_per_hari;
                                     </tr>
                                     </table>
                                 </div>
-                            </div>`;
+                                
+                            </div>
+                            `;
             return body;
         }
     });
+    $('#bayar').on('click', function(){
+        confirm('Silahkan Transfer');
+        alert('Terimaksih');
+    })
 </script>
